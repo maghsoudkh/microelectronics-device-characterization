@@ -1,17 +1,16 @@
-# 02 — Metal–Semiconductor Contacts: Si/SiC Schottky Diodes and Au/GaAs TCAD
+# Module 02: Si and SiC Schottky diodes and Au/GaAs contacts in TCAD
 
 [Full report (PDF)](report.pdf) · May 2026
 
-## A. Lab: silicon vs silicon-carbide Schottky diodes
+## A. Lab: silicon and silicon-carbide Schottky diodes
 
-**Goal:** compare a Si and a wide-bandgap SiC Schottky diode and extract their barrier and doping parameters.
+The goal is to compare a Si diode with a wide-bandgap SiC diode and extract their barrier and doping parameters.
 
-**Method**
-1. Measure I–V on a Peltier-controlled stage from 15 °C to 70 °C (automated LabVIEW sweeps).
-2. Fit the Shockley equation at each temperature to get η(T) and I<sub>S</sub>(T).
-3. Build a **Richardson plot**, ln(I<sub>S</sub>/T²) against q/kT. Its slope gives the Schottky barrier height (SBH).
-4. Measure C–V at 1 MHz, then use a **Mott–Schottky** (1/C² vs V) fit. The x-intercept gives V<sub>bi</sub> and the slope gives the doping, which together give the effective device area.
-5. Check that the impedance phase stays near −90° (pure capacitive response) across the bias range.
+1. We measured I–V on a Peltier stage from 15 °C to 70 °C, with LabVIEW running the sweeps.
+2. A Shockley fit at each temperature gives η(T) and I<sub>S</sub>(T).
+3. On a Richardson plot of ln(I<sub>S</sub>/T²) against q/kT, the slope gives the Schottky barrier height.
+4. We measured C–V at 1 MHz and fitted 1/C² against V. The x-intercept gives V<sub>bi</sub> and the slope gives the doping, and from both we computed the effective area.
+5. The impedance phase stays near −90° over the whole bias range, so the diodes respond as pure capacitances.
 
 <table>
 <tr>
@@ -32,7 +31,7 @@
 </tr>
 </table>
 
-**Results**
+### Results
 
 | Parameter | Si | SiC |
 |---|---|---|
@@ -41,8 +40,7 @@
 | Doping N<sub>D</sub> | 1.67×10<sup>15</sup> cm<sup>-3</sup> | 5.93×10<sup>15</sup> cm<sup>-3</sup> |
 | Effective area | 0.09 mm² | 0.63 mm² |
 
-- The SiC diode has a much higher barrier height than the Si diode, in line with its wide bandgap.
-- 1/C² is linear in deep reverse bias for both devices, which indicates uniform doping.
+The SiC diode has a much higher barrier than the Si diode, as its wider bandgap predicts. For both devices 1/C² is linear in deep reverse bias, which means the doping is uniform.
 
 <table>
 <tr>
@@ -63,10 +61,9 @@
 </tr>
 </table>
 
-## B. TCAD: Au/GaAs metal–semiconductor junction (Synopsys Sentaurus)
+## B. TCAD: Au/GaAs junction in Sentaurus
 
-- **n-type GaAs + Au (φ<sub>m</sub> = 5.47 eV):** upward band bending forms a Schottky barrier, and the I–V is clearly rectifying.
-- **p-type GaAs + Au:** no significant barrier for holes, and the I–V is linear (ohmic). The same metal gives opposite contact types depending on the semiconductor's doping type.
+Gold has a work function of 5.47 eV. On n-type GaAs the bands bend upward, a Schottky barrier forms and the I–V rectifies. On p-type GaAs the holes see no significant barrier and the I–V is linear. The same metal gives a rectifying or an ohmic contact depending on the doping type.
 
 <table>
 <tr>
@@ -87,8 +84,7 @@
 </tr>
 </table>
 
-- **C–V:** capacitance falls with reverse bias, and 1/C² is linear for uniform doping.
-- **Heavy doping (10<sup>20</sup> cm<sup>-3</sup>) with tunnelling enabled:** the depletion width (W ∝ 1/√N) becomes thin enough for field emission. The contact turns ohmic even with a high-work-function metal, which is the physics behind real ohmic contacts.
+The simulated capacitance falls with reverse bias and 1/C² is linear, as expected for uniform doping. At 10<sup>20</sup> cm<sup>-3</sup> with the tunnelling model on, the depletion width, which scales as 1/√N, becomes thin enough for field emission. The contact then turns ohmic even with a high-work-function metal. Real ohmic contacts rely on the same effect.
 
 <table>
 <tr>
@@ -101,4 +97,4 @@
 </tr>
 </table>
 
-**Authors:** L. Ferrari, A. Maghsoud, S. Sbrescia
+Authors: L. Ferrari, A. Maghsoud, S. Sbrescia

@@ -1,10 +1,10 @@
-# 03 — MOSFET: TCAD Design Study and Experimental DC/AC Characterization
+# Module 03: MOSFET in TCAD and DC/AC characterization in the lab
 
 [Full report (PDF)](report.pdf) · June 2026
 
-## A. TCAD: 130 nm n-MOSFET (Synopsys Sentaurus)
+## A. TCAD: 130 nm n-MOSFET in Sentaurus
 
-- **Band diagrams** along vertical and horizontal cutlines at equilibrium, at V<sub>GS</sub> = 1.5 V / V<sub>DS</sub> = 0, and at V<sub>GS</sub> = V<sub>DS</sub> = 1.5 V. They show inversion forming, and the quasi-Fermi levels splitting once current flows.
+We took band diagrams along vertical and horizontal cutlines in three bias conditions: equilibrium, V<sub>GS</sub> = 1.5 V with V<sub>DS</sub> = 0, and V<sub>GS</sub> = V<sub>DS</sub> = 1.5 V. They show the inversion layer forming, and the quasi-Fermi levels splitting once current flows.
 
 <table>
 <tr>
@@ -19,10 +19,9 @@
 </tr>
 </table>
 
-- **Substrate doping sweep** (10<sup>17</sup>, 5×10<sup>17</sup>, 10<sup>18</sup> cm<sup>-3</sup>; L<sub>G</sub> = 130 nm, t<sub>ox</sub> = 2.5 nm): V<sub>th</sub> falls as N<sub>sub</sub> falls, because there is less bulk depletion charge and a smaller φ<sub>F</sub>.
-- **Oxide thickness sweep** (2.5, 10, 20 nm): thicker oxide lowers C<sub>ox</sub> and weakens gate control. V<sub>th</sub> rises sharply and the subthreshold slope degrades.
+We then swept the substrate doping over 10<sup>17</sup>, 5×10<sup>17</sup> and 10<sup>18</sup> cm<sup>-3</sup>, with L<sub>G</sub> = 130 nm and t<sub>ox</sub> = 2.5 nm. V<sub>th</sub> falls with N<sub>sub</sub> because the bulk depletion charge and φ<sub>F</sub> both shrink. A sweep of the oxide thickness over 2.5, 10 and 20 nm shows the opposite: a thicker oxide lowers C<sub>ox</sub>, weakens gate control, raises V<sub>th</sub> sharply and degrades the subthreshold slope.
 
-Both trends are explained with V<sub>th</sub> = V<sub>FB</sub> + 2φ<sub>F</sub> + √(4ε<sub>Si</sub>qN<sub>sub</sub>φ<sub>F</sub>)/C<sub>ox</sub>.
+Both trends follow from V<sub>th</sub> = V<sub>FB</sub> + 2φ<sub>F</sub> + √(4ε<sub>Si</sub>qN<sub>sub</sub>φ<sub>F</sub>)/C<sub>ox</sub>.
 
 <table>
 <tr>
@@ -37,13 +36,13 @@ Both trends are explained with V<sub>th</sub> = V<sub>FB</sub> + 2φ<sub>F</sub>
 
 ## B. Lab: experimental DC and AC characterization
 
-**DC**
+### DC
 
 | Parameter | Method | Value |
 |---|---|---|
-| Threshold voltage V<sub>th</sub> | Linear extrapolation of I<sub>D</sub>–V<sub>G</sub> at V<sub>DS</sub> = 1 V | **3.068 V** |
-| On-resistance R<sub>ON</sub> | Inverse slope of I<sub>D</sub>–V<sub>D</sub> in deep ohmic region (0–0.1 V, max V<sub>G</sub>) | **9.1 Ω** |
-| Subthreshold slope SS | Semilog I<sub>D</sub>–V<sub>G</sub>, 2.1 V < V<sub>GS</sub> < 2.7 V | **237.5 mV/dec** |
+| Threshold voltage V<sub>th</sub> | Linear extrapolation of I<sub>D</sub>–V<sub>G</sub> at V<sub>DS</sub> = 1 V | 3.068 V |
+| On-resistance R<sub>ON</sub> | Inverse slope of I<sub>D</sub>–V<sub>D</sub> from 0 to 0.1 V at the highest V<sub>G</sub> | 9.1 Ω |
+| Subthreshold slope SS | Semilog I<sub>D</sub>–V<sub>G</sub>, 2.1 V < V<sub>GS</sub> < 2.7 V | 237.5 mV/dec |
 
 <table>
 <tr>
@@ -64,13 +63,13 @@ Both trends are explained with V<sub>th</sub> = V<sub>FB</sub> + 2φ<sub>F</sub>
 </tr>
 </table>
 
-Transconductance g<sub>m</sub> rises with V<sub>DS</sub> and then drops at high V<sub>GS</sub> because of mobility degradation (surface scattering in the strong vertical field).
+The transconductance g<sub>m</sub> rises with V<sub>DS</sub>. At high V<sub>GS</sub> it drops, because the strong vertical field increases surface scattering and lowers the mobility.
 
-**AC (MOS capacitor)**
+### AC, MOS capacitor
 
-- Multi-frequency C–V (1 kHz to 1 MHz) shows accumulation, depletion and inversion. G–V peaks near the depletion–inversion transition point to interface states and series resistance.
-- **1 MHz C–V hysteresis:** a flat-band shift between forward and backward sweeps, caused by charge trapping at the Si/SiO₂ interface and in the oxide.
-- **Parameter extraction** (effective area 0.003 cm²): C<sub>ox</sub> = 4.54×10<sup>-10</sup> F, C<sub>min</sub> = 2.29×10<sup>-10</sup> F → **t<sub>ox</sub> = 22.84 nm**, **N<sub>A</sub> = 2.54×10<sup>17</sup> cm<sup>-3</sup>**.
+C–V from 1 kHz to 1 MHz shows accumulation, depletion and inversion. The G–V peaks near the depletion–inversion transition point to interface states and series resistance. At 1 MHz the forward and backward sweeps differ by a flat-band shift, which comes from charge trapping at the Si/SiO₂ interface and in the oxide.
+
+With an effective area of 0.003 cm², C<sub>ox</sub> = 4.54×10<sup>-10</sup> F and C<sub>min</sub> = 2.29×10<sup>-10</sup> F give t<sub>ox</sub> = 22.84 nm and N<sub>A</sub> = 2.54×10<sup>17</sup> cm<sup>-3</sup>.
 
 <table>
 <tr>
@@ -91,4 +90,4 @@ Transconductance g<sub>m</sub> rises with V<sub>DS</sub> and then drops at high 
 </tr>
 </table>
 
-**Authors:** L. Ferrari, A. Maghsoud, S. Sbrescia
+Authors: L. Ferrari, A. Maghsoud, S. Sbrescia

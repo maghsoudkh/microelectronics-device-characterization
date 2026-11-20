@@ -1,15 +1,14 @@
-# 01 — PN Junction: Silicon Bandgap Extraction and TCAD Study
+# Module 01: silicon bandgap extraction and PN junction TCAD
 
 [Full report (PDF)](report.pdf) · April 2026
 
-## A. Lab: extracting the silicon bandgap from diode I–V(T)
+## A. Lab: silicon bandgap from diode I–V at several temperatures
 
-**Goal:** measure the energy gap of silicon using only the electrical response of a diode.
+The goal is to measure the energy gap of silicon using only the electrical response of a diode.
 
-**Method**
-1. Measure forward and reverse I–V of a Si diode at six temperatures from 25 °C to 70 °C.
-2. Fit the Shockley equation, I = I<sub>S</sub>(e<sup>qV/ηkT</sup> − 1), in the linear semilog region (0.20–0.35 V) to get I<sub>S</sub> and η at each temperature.
-3. Use the model I<sub>S</sub> = B·T<sup>3+γ/2</sup>·exp(−qE<sub>g</sub>/kT) and fit ln I<sub>S</sub> against 1/kT. The slope gives E<sub>g</sub>.
+1. We measured forward and reverse I–V of a Si diode at six temperatures from 25 °C to 70 °C.
+2. We fitted the Shockley equation, I = I<sub>S</sub>(e<sup>qV/ηkT</sup> − 1), between 0.20 and 0.35 V, where the semilog curve is linear, to get I<sub>S</sub> and η at each temperature.
+3. With the model I<sub>S</sub> = B·T<sup>3+γ/2</sup>·exp(−qE<sub>g</sub>/kT), the slope of ln I<sub>S</sub> against 1/kT gives E<sub>g</sub>.
 
 <table>
 <tr>
@@ -22,7 +21,7 @@
 </tr>
 </table>
 
-**Results**
+### Results
 
 | T [°C] | I<sub>S</sub> [A] | η |
 |---|---|---|
@@ -33,8 +32,7 @@
 | 66.8 | 1.16×10<sup>-11</sup> | 1.000 |
 | 70.0 | 1.86×10<sup>-11</sup> | 1.001 |
 
-- **E<sub>g</sub> ≈ 1.152 eV**, about 3 % above the textbook 1.12 eV for silicon.
-- η stays close to 1 at every temperature, so transport is dominated by diffusion, as expected for an ideal Si diode.
+The extracted gap is E<sub>g</sub> ≈ 1.152 eV, about 3 % above the textbook 1.12 eV for silicon. η stays close to 1 at every temperature, so diffusion dominates the current, as expected for an ideal Si diode.
 
 <table>
 <tr>
@@ -47,10 +45,9 @@
 </tr>
 </table>
 
-## B. TCAD: PN junction physics (Synopsys Sentaurus)
+## B. TCAD: PN junction in Sentaurus
 
-- **Equilibrium:** carrier densities, electric field and electrostatic potential across the junction. The field peaks in the depletion region.
-- **Band diagram:** built-in potential and space-charge-region width read from the simulation and compared with analytical expressions.
+At equilibrium we simulated the carrier densities, electric field and electrostatic potential across the junction. The field peaks in the depletion region. We read the built-in potential and the width of the space-charge region from the band diagram and compared them with the analytical expressions.
 
 <table>
 <tr>
@@ -65,8 +62,7 @@
 </tr>
 </table>
 
-- **I–V:** exponential forward current; series resistance bends the semilog curve near 0.7–0.8 V.
-- **Parametric study:** effect of doping level, device length and material (Si vs Ge). Ge's smaller bandgap gives a higher intrinsic carrier density, so it has a lower forward voltage and a higher current.
+The forward current grows exponentially until series resistance bends the semilog curve near 0.7 to 0.8 V. We then varied the doping, the device length and the material. Germanium has a smaller bandgap and so a higher intrinsic carrier density, which gives it a lower forward voltage and a higher current than silicon.
 
 <table>
 <tr>
@@ -87,4 +83,4 @@
 </tr>
 </table>
 
-**Authors:** A. Maghsoud, S. Sbrescia
+Authors: A. Maghsoud, S. Sbrescia
