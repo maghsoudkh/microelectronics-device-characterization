@@ -38,3 +38,7 @@ Group 25 worked on all modules together:
 - Lorenzo Ferrari, modules 02 and 03
 
 We wrote the reports for course assessment and share them here as a record of the work.
+
+## License
+
+The reports, figures and text are licensed under [CC BY 4.0](LICENSE). You may reuse them with credit to the authors listed above. The University of Padova logos on the report slides belong to the university and are not covered by this license.
